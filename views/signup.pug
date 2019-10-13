@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  .container#container-signup
+    .row#row-signup
+      .col-3#header-empty
+      .col-6.text-center#header-signup
+        h1 SignUp
+        p Welcome to Belle-admin
+      .col-3#header-empty
+      .col-3#body-empty 
+      .col-6.text-center#body-signup
+        form#signUp-form(action="/auth/signup", method="post")   
+          .mb-1#div-id-signup
+            input#id(type="text", name="email" placeholder="email")
+          .mb-1#div-password-signup  
+            input#password(type="password", name="password" placeholder="password")
+          #div-password-signup  
+            input#name(type="text", name="name" placeholder="name")    
+          .mt-3#div-signup-button 
+            button#signup_submit(type='submit') Signup 
+      .col-3#body-empty
+      
+  block javascript      
+    script(src="/javascripts/login.js")      
+  
+  

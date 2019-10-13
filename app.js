@@ -5,12 +5,16 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sesseion = require('express-session');
 const flash = require('connect-flash');
+const passport = require('passport');
+const {sequelize} = require('./models');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const mainRouter = require('./routes/main');
+const authRouter = require('./routes/auth');
 require('dotenv').config();
+const passportConfig = require('./passport');
 const app = express();
-
+sequelize.sync();
+passportConfig(passport);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -32,10 +36,12 @@ app.use(sesseion({
   },
 }));
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/main', mainRouter);
+app.use('/auth', authRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
