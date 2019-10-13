@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  .container#container-login
+    .row#row-login
+      .col-3#header-empty
+      .col-6.text-center#header-login
+        h1 Login
+        p Welcome to Belle-admin
+      .col-3#header-empty
+
+      .col-3#body-empty    
+      .col-6.text-center#body-login  
+        #div-id-input
+          input#id(type="text", name="id" placeholder="id")
+        #div-password-input  
+          input#password(type="password", name="password" placeholder="password")
+      .col-3#header-empty
+
+      .col-5#footer-empty
+      .col-2.text-center#footer-login
+         .mt-3#div-login-button
+          button#login(type='submit') login
+          button#signup(type='submit') Signup  
+      .col-5#footer-empty
+  block javascript      
+    script(src="./js/login.js")      
+  
+  
