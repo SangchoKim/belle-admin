@@ -8,6 +8,7 @@ const flash = require('connect-flash');
 const passport = require('passport');
 const {sequelize} = require('./models');
 const indexRouter = require('./routes/index');
+const mainRouter = require('./routes/main')
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 require('dotenv').config();
@@ -40,6 +41,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', indexRouter);
+app.use('/main', mainRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 
